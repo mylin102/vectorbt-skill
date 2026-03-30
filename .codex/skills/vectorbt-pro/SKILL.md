@@ -1,3 +1,13 @@
+---
+name: vectorbt-pro
+description: "專家級量化交易分析與策略回測工具，基於 vectorbt 庫。提供向量化運算與性能優化建議。"
+category: analysis
+risk: safe
+source: community
+tags: "[finance, backtesting, vectorbt, quant]"
+date_added: "2026-03-30"
+---
+
 # vectorbt-pro
 
 ## Purpose
@@ -7,65 +17,19 @@
 - "backtest trading strategy"
 - "vectorbt tutorial"
 - "analyze financial data"
-- "generate trading signals"
-- "optimize portfolio"
 - "策略回測"
 - "vectorbt 使用教學"
-- "量化交易分析"
-- "產生交易信號"
-- "投資組合優化"
 
 ## Instructions
-
 ### 核心原則
-1. **向量化思維**：始終優先使用 vectorbt 的向量化操作，避免在大型數據集上使用 Python 迴圈。
-2. **Numba 加速**：利用 vectorbt 底層的 Numba 加速功能處理複雜計算。
-3. **廣播機制 (Broadcasting)**：利用 vectorbt 的自動廣播功能，同時測試多種參數或多個資產。
-4. **互動式視覺化**：建議使用 Plotly 進行數據探索。
+1. **向量化思維**：始終優先使用 vectorbt 的向量化操作。
+2. **Numba 加速**：利用底層 Numba 加速處理複雜計算。
+3. **廣播機制**：利用自動廣播功能測試多種參數。
 
 ### 常用工作流
-
-#### 1. 數據獲取與預處理
-使用 `vbt.YFData.download` 或 `vbt.CCXTData.download` 獲取數據。
-```python
-import vectorbt as vbt
-data = vbt.YFData.download("BTC-USD")
-price = data.get("Close")
-```
-
-#### 2. 指標計算
-使用內建指標或自定義指標工廠。
-```python
-fast_ma = vbt.MA.run(price, 10)
-slow_ma = vbt.MA.run(price, 50)
-```
-
-#### 3. 信號產生
-利用交叉函數產生進出場信號。
-```python
-entries = fast_ma.ma_crossed_above(slow_ma)
-exits = fast_ma.ma_crossed_below(slow_ma)
-```
-
-#### 4. 組合回測
-使用 `vbt.Portfolio.from_signals` 執行回測。
-```python
-pf = vbt.Portfolio.from_signals(price, entries, exits, init_cash=100)
-print(pf.stats())
-```
-
-#### 5. 參數優化
-利用 `run_combs` 測試參數組合。
-```python
-windows = np.arange(2, 101)
-fast_ma, slow_ma = vbt.MA.run_combs(price, window=windows, r=2)
-```
-
-### 注意事項
-- 確保安裝了必要的依賴：`pip install "vectorbt[full]"`。
-- 大規模回測時注意內存使用。
-- 始終檢查回測結果中的 `stats()` 以評估風險（如最大回撤、夏普比率）。
+1. **數據獲取**：vbt.YFData.download
+2. **指標計算**：vbt.MA.run
+3. **組合回測**：vbt.Portfolio.from_signals
 
 ## References
 - 官方文檔: https://vectorbt.dev/
-- GitHub: https://github.com/polakowo/vectorbt

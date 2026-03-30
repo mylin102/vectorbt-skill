@@ -1,6 +1,11 @@
 ---
 name: vectorbt-pro
-description: 專家級量化交易分析與策略回測工具，基於 vectorbt 庫。提供向量化運算與性能優化建議。
+description: "專家級量化交易分析與策略回測工具，基於 vectorbt 庫。提供向量化運算與性能優化建議。"
+category: analysis
+risk: safe
+source: community
+tags: "[finance, backtesting, vectorbt, quant]"
+date_added: "2026-03-30"
 ---
 
 # vectorbt-pro
